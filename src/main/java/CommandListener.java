@@ -9,7 +9,8 @@ import java.io.FileNotFoundException;
  * Main listener, especially for Guild messages.
  */
 public class CommandListener extends ListenerAdapter {
-    private char commandChar;
+    private final char commandChar;
+    private MessageReceivedEvent currentMessageEvent;
 
     public CommandListener(char commandChar){
         this.commandChar = commandChar;
@@ -21,25 +22,27 @@ public class CommandListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getAuthor().isBot()) return;              //Make sure bots can't prompt Mango
+        //Keep a reference to the event
+        currentMessageEvent = event;
 
-        //Check input for the command character and then remove it from the command string
+        //Gather the input from the event and strip it of extra content
         Message message = event.getMessage();
-
         String input = message.getContentStripped();
-        //For some reason need to make sure it's not empty ig??
-        if (input.length() == 0){
-            return;
-        }
 
-        if (input.charAt(0) == commandChar){                //Check if the command character is present
-            input = input.substring(1);           //Cut off the command char
+        //If the input is acceptable, process it through the different commands
+        if (isAcceptableInput(input)){
+            //TODO: Process commands
         }
-        else {
-            //If the command char isn't present, do nothing with it
-            return;
-        }
+    }
 
-        System.out.println(input);
+    /**
+     * Checks the validity of the input. Ensures that the command
+     * character is present, as well as any other needed validation.
+     * @param input The inputted command
+     * @return      whether the input is valid or not
+     */
+    public boolean isAcceptableInput(String input){
+        //Ensure the first char is the command char and the messenger isn't a bot
+        return (input.charAt(0) == commandChar && !currentMessageEvent.getAuthor().isBot());
     }
 }
