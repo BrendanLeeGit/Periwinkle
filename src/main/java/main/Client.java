@@ -10,7 +10,7 @@ public class Client {
     public static void main(String[] args) {
         Receiver receiver = new Receiver();
 
-        Command startCommand = new StartCommand(receiver);
+        Command startCommand = new SendScreenShotCommand(receiver);
         Command stopCommand = new StopCommand(receiver);
 
         Invoker invoker = new Invoker();

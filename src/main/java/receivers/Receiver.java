@@ -1,11 +1,11 @@
 package receivers;
 
 public class Receiver {
-    public void start() {
-        System.out.println("Starting...");
+    public void sendScreenShot() {
+        //TODO: implement
     }
 
-    public void stop() {
+    public void sendMessage() {
         System.out.println("Stopping...");
     }
 }
