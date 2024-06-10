@@ -31,7 +31,8 @@ public class CommandListener extends ListenerAdapter {
 
         //If the input is acceptable, process it through the different commands
         if (isAcceptableInput(input)){
-            //TODO: Process commands
+            //TODO: Process commands through
+            //TODO: Utilize the Invoker to execute commands
         }
     }
 
