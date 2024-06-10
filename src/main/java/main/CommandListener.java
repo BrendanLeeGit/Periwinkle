@@ -1,12 +1,11 @@
+package main;
+
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-import java.io.FileNotFoundException;
-
 /**
- * Main listener, especially for Guild messages.
+ * main.Main listener, especially for Guild messages.
  */
 public class CommandListener extends ListenerAdapter {
     private final char commandChar;
@@ -32,7 +31,7 @@ public class CommandListener extends ListenerAdapter {
         //If the input is acceptable, process it through the different commands
         if (isAcceptableInput(input)){
             //TODO: Process commands through
-            //TODO: Utilize the Invoker to execute commands
+            //TODO: Utilize the commands.Invoker to execute commands
         }
     }
 

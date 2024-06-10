@@ -1,12 +1,14 @@
+package filereadingandmanipulation;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FileReader {
+public class MyFileReader {
     private File file;
     private Scanner scanner;
 
-    public FileReader(String fileName){
+    public MyFileReader(String fileName){
         file = new File(fileName);
         try {
             scanner = new Scanner(file);
