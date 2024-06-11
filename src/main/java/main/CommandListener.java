@@ -38,8 +38,8 @@ public class CommandListener extends ListenerAdapter {
         Command registerUserCommand = new RegisterUserCommand(receiver);
 
         invoker = new Invoker();
-        invoker.register("SendScreenshot", sendScreenShotCommand);
-        invoker.register("RegisterUser", registerUserCommand);
+        invoker.registerCommand("SendScreenshot", sendScreenShotCommand);
+        invoker.registerCommand("RegisterUser", registerUserCommand);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class CommandListener extends ListenerAdapter {
 
         //If the input is acceptable, process it through the different commands
         if (isAcceptableInput(input)){
-            invoker.execute(input);
+            invoker.executeCommand(input);
         }
     }
 
