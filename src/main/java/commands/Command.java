@@ -5,5 +5,5 @@ package commands;
  * with all the others and executed the same way.
  */
 public interface Command {
-    void execute();
+    void execute(String[] inputtedCommand);
 }

@@ -11,6 +11,9 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args){
         //Read the key from the key.txt file and start up the bot
+        //Generate MessageChannelTracker that will be universally used
+        MessageChannelTracker messageChannelTracker = new MessageChannelTracker();
+
         try (BufferedReader br = new BufferedReader(new FileReader("key.txt"))){
             JDA api =
                     JDABuilder.createDefault(br.readLine()).

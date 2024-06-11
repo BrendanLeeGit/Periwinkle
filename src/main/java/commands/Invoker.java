@@ -10,10 +10,11 @@ public class Invoker {
         commandMap.put(commandName, command);
     }
 
-    public void execute(String commandName) {
-        Command command = commandMap.get(commandName);
+    public void execute(String[] inputtedCommand) {
+        //The second index holds the name of the command as per the format
+        Command command = commandMap.get(inputtedCommand[1]);
         if (command != null) {
-            command.execute();
+            command.execute(inputtedCommand);
         } else {
             System.out.println("Unknown command");
         }

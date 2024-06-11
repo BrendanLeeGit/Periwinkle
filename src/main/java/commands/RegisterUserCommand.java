@@ -2,15 +2,15 @@ package commands;
 
 import receivers.GeneralReceiver;
 
-public class SendScreenShotCommand implements Command {
+public class RegisterUserCommand implements Command {
     private final GeneralReceiver receiver;
 
-    public SendScreenShotCommand(GeneralReceiver receiver) {
+    public RegisterUserCommand(GeneralReceiver receiver) {
         this.receiver = receiver;
     }
 
     @Override
     public void execute(String[] inputtedCommand) {
-        receiver.sendScreenShot();
+        receiver.registerUser();
     }
 }
