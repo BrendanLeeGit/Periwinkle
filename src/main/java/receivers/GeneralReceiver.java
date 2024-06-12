@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.utils.FileUpload;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 
 public class GeneralReceiver {
@@ -30,6 +31,15 @@ public class GeneralReceiver {
                 .addEmbeds(embed) // add the embed you want to reference the file with
                 .queue();
 
+    }
+
+    public void shutDownPC(){
+        try {
+            Runtime r = Runtime.getRuntime();
+            r.exec("shutdown -s -t " + 10);
+        } catch (NumberFormatException | IOException e) {
+            messageChannelTracker.getCurrentMessageChannel().sendMessage("Shutdown failed.").queue();
+        }
     }
 
     public void registerUser() {

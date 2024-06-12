@@ -2,6 +2,7 @@ package main;
 
 import commands.Invoker;
 import commands.RegisterUserCommand;
+import commands.ShutDownPCCommand;
 import commands.SendScreenShotCommand;
 import receivers.GeneralReceiver;
 
@@ -27,6 +28,7 @@ public class CommandPreparer {
     private void registerCommands(){
         invoker.registerCommand("SendScreenshot", new SendScreenShotCommand(receiver));
         invoker.registerCommand("RegisterUser", new RegisterUserCommand(receiver));
+        invoker.registerCommand("ShutDownPC", new ShutDownPCCommand(receiver));
     }
 
     public void processInputtedCommand(String[] input){
