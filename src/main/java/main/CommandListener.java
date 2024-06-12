@@ -1,14 +1,9 @@
 package main;
 
-import commands.Command;
-import commands.Invoker;
-import commands.RegisterUserCommand;
-import commands.SendScreenShotCommand;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
-import receivers.GeneralReceiver;
 
 /**
  * main.Main listener, especially for Guild messages.
