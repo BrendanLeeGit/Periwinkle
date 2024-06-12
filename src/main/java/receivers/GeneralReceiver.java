@@ -17,6 +17,15 @@ public class GeneralReceiver {
         this.messageChannelTracker = messageChannelTracker;
     }
 
+    public void registerUser() {
+        //TODO: implement
+        System.out.println("user registering?");
+        messageChannelTracker.addCurrentMessageChannelToMessageChannels();
+
+        //TODO: Remove print line
+        System.out.println(messageChannelTracker.getCurrentMessageChannel().toString());
+    }
+
     public void sendScreenShot() {
         ScreenshotTaker screenshotTaker = new ScreenshotTaker();
         screenshotTaker.takeScreenShot();
@@ -42,12 +51,7 @@ public class GeneralReceiver {
         }
     }
 
-    public void registerUser() {
-        //TODO: implement
-        System.out.println("user registering?");
-        messageChannelTracker.addCurrentMessageChannelToMessageChannels();
-
-        //TODO: Remove print line
-        System.out.println(messageChannelTracker.getCurrentMessageChannel().toString());
+    public void turnOffBot(){
+        System.exit(0);
     }
 }

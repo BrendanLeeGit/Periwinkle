@@ -1,9 +1,6 @@
 package main;
 
-import commands.Invoker;
-import commands.RegisterUserCommand;
-import commands.ShutDownPCCommand;
-import commands.SendScreenShotCommand;
+import commands.*;
 import receivers.GeneralReceiver;
 
 public class CommandPreparer {
@@ -29,6 +26,7 @@ public class CommandPreparer {
         invoker.registerCommand("SendScreenshot", new SendScreenShotCommand(receiver));
         invoker.registerCommand("RegisterUser", new RegisterUserCommand(receiver));
         invoker.registerCommand("ShutDownPC", new ShutDownPCCommand(receiver));
+        invoker.registerCommand("TurnOffBot", new TurnOffBotCommand(receiver));
     }
 
     public void processInputtedCommand(String[] input){
