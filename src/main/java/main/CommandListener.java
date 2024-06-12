@@ -17,29 +17,17 @@ public class CommandListener extends ListenerAdapter {
     private final char commandChar;
     private final MessageChannelTracker messageChannelTracker;
     private MessageReceivedEvent currentMessageEvent;
-    private Invoker invoker;
-
-    public CommandListener(char commandChar){
-        this.commandChar = commandChar;
-        messageChannelTracker = new MessageChannelTracker();
-        prepareCommands();
-    }
+    private final CommandPreparer commandPreparer;
 
     public CommandListener(){
         commandChar = '&';
         messageChannelTracker = new MessageChannelTracker();
+        commandPreparer = new CommandPreparer(messageChannelTracker);
         prepareCommands();
     }
 
     private void prepareCommands(){
-        GeneralReceiver receiver = new GeneralReceiver(messageChannelTracker);
-
-        Command sendScreenShotCommand = new SendScreenShotCommand(receiver);
-        Command registerUserCommand = new RegisterUserCommand(receiver);
-
-        invoker = new Invoker();
-        invoker.registerCommand("SendScreenshot", sendScreenShotCommand);
-        invoker.registerCommand("RegisterUser", registerUserCommand);
+        commandPreparer.prepareCommands();
     }
 
     @Override
@@ -58,7 +46,7 @@ public class CommandListener extends ListenerAdapter {
 
         //If the input is acceptable, process it through the different commands
         if (isAcceptableInput(input)){
-            invoker.executeCommand(input);
+            commandPreparer.processInputtedCommand(input);
         }
     }
 
@@ -69,7 +57,9 @@ public class CommandListener extends ListenerAdapter {
      * @return      whether the input is valid or not
      */
     public boolean isAcceptableInput(String[] input){
-        //Ensure the first char is the command char and the messenger isn't a bot
-        return (input[0].charAt(0) == commandChar && !currentMessageEvent.getAuthor().isBot());
+        if (input == null || currentMessageEvent.getAuthor().isBot()){
+            return false;
+        }
+        return (input[0].charAt(0) == commandChar);
     }
 }
