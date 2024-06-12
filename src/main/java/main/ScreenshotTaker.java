@@ -19,16 +19,11 @@ public class ScreenshotTaker {
      * The previous screenshot.png is overwritten.
      */
     public void takeScreenShot(){
-        BufferedImage image = null;
-
         try {
-            image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+            BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+            ImageIO.write(image, "png", new File("screenshot.png"));
         } catch (AWTException e) {
             System.out.println("A screenshot could not be taken.");
-            return;
-        }
-        try {
-            ImageIO.write(image, "png", new File("screenshot.png"));
         } catch (IOException e) {
             System.out.println("The taken screenshot could not be saved.");
         }
