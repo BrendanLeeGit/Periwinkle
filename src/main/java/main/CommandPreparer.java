@@ -23,9 +23,10 @@ public class CommandPreparer {
     }
 
     private void registerCommands(){
-        invoker.registerCommand("SendScreenshot", new SendScreenShotCommand(receiver));
-        invoker.registerCommand("RegisterUser", new RegisterUserCommand(receiver));
+        invoker.registerCommand("Help", new HelpCommand(receiver));
+        invoker.registerCommand("SendScreenshot", new SendScreenshotCommand(receiver));
         invoker.registerCommand("ShutDownPC", new ShutDownPCCommand(receiver));
+        invoker.registerCommand("RegisterUser", new RegisterUserCommand(receiver));
         invoker.registerCommand("TurnOffBot", new TurnOffBotCommand(receiver));
     }
 

@@ -17,6 +17,17 @@ public class GeneralReceiver {
         this.messageChannelTracker = messageChannelTracker;
     }
 
+    public void sendHelpMessage(){
+        messageChannelTracker.getCurrentMessageChannel().sendMessage("""
+                The available commands are as follows:
+                Help
+                RegisterUser
+                SendScreenshot
+                ShutDownPC
+                TurnOffBot
+                """).queue();
+    }
+
     public void registerUser() {
         //TODO: implement
         System.out.println("user registering?");
@@ -32,12 +43,12 @@ public class GeneralReceiver {
 
         MessageEmbed embed = new EmbedBuilder()
                 .setDescription("Here's your current screen :)")
-                .setImage("attachment://screenshot.png") // refer to the file by using the "attachment://" schema with the filename we gave it above
+                .setImage("attachment://screenshot.png")
                 .build();
 
         FileUpload file = FileUpload.fromData(new File("screenshot.png"), "screenshot.png");
-        messageChannelTracker.getCurrentMessageChannel().sendFiles(Collections.singleton(file)) // send the file upload
-                .addEmbeds(embed) // add the embed you want to reference the file with
+        messageChannelTracker.getCurrentMessageChannel().sendFiles(Collections.singleton(file))
+                .addEmbeds(embed)
                 .queue();
 
     }

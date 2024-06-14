@@ -35,7 +35,7 @@ public class CommandListener extends ListenerAdapter {
         currentMessageEvent = event;
         messageChannelTracker.setCurrentMessageChannel(event.getChannel());
 
-        //Gather the input from the event and strip it of extra content
+        //We split the input into a String[] where anything at [2] and onward is a parameter for the command
         Message message = event.getMessage();
         String[] input = message.getContentStripped().split(" ");
 
