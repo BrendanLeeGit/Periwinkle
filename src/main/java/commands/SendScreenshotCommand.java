@@ -2,10 +2,10 @@ package commands;
 
 import receivers.GeneralReceiver;
 
-public class SendScreenShotCommand implements Command {
+public class SendScreenshotCommand implements Command {
     private final GeneralReceiver receiver;
 
-    public SendScreenShotCommand(GeneralReceiver receiver) {
+    public SendScreenshotCommand(GeneralReceiver receiver) {
         this.receiver = receiver;
     }
 
